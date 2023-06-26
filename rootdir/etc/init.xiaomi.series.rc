@@ -1,0 +1,13 @@
+service vendor.xiaomi_series_script /vendor/bin/init.xiaomi.series.sh
+    class early_hal
+    user root
+    group root
+    oneshot
+
+# Sensors
+service vendor-sensor-sh /vendor/bin/init.qcom.sensors.sh
+    override
+    class core
+    user root
+    oneshot
+    disabled

@@ -1,0 +1,22 @@
+//
+// Copyright (C) 2021 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Init scripts
+
+prebuilt_etc {
+    name: "init.xiaomi.series.rc",
+    src: "etc/init.xiaomi.series.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+// Configuration scripts
+
+sh_binary {
+    name: "init.xiaomi.series.sh",
+    src: "bin/init.xiaomi.series.sh",
+    vendor: true,
+}
