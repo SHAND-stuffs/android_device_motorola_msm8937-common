@@ -37,7 +37,13 @@ TARGET_KERNEL_CONFIG += \
     vendor/feature/kprobes.config \
     vendor/feature/lmkd.config \
     vendor/feature/uclamp.config \
+    vendor/feature/no-camera-stack.config \
     vendor/motorola/msm8937/common.config
+
+ifeq ($(TARGET_DISABLE_AUDIO),true)
+TARGET_KERNEL_CONFIG += \
+    vendor/feature/no-audio-stack.config
+endif
 
 ifeq ($(TARGET_KERNEL_VERSION),4.19)
 TARGET_KERNEL_CONFIG += \
