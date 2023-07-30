@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Kernel
+TARGET_USES_MITHORIUM_KERNEL := true
+
 # Partitions
 SSI_PARTITIONS := product system system_ext
 TREBLE_PARTITIONS := odm vendor
@@ -24,33 +27,25 @@ TARGET_SCREEN_DENSITY ?= 280
 
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/7824900.sdhci androidboot.selinux=permissive
-TARGET_KERNEL_CONFIG := \
-    vendor/msm8937-perf_defconfig
+
 ifeq ($(TARGET_KERNEL_VERSION),4.19)
 TARGET_KERNEL_CONFIG += \
     vendor/msm8937-legacy.config
 endif
 TARGET_KERNEL_CONFIG += \
-    vendor/common.config \
-    vendor/feature/android-12.config \
-    vendor/feature/exfat.config \
-    vendor/feature/kprobes.config \
-    vendor/feature/lmkd.config \
-    vendor/feature/uclamp.config \
     vendor/feature/no-camera-stack.config \
     vendor/motorola/msm8937/common.config
 
-ifeq ($(TARGET_DISABLE_AUDIO),true)
-TARGET_KERNEL_CONFIG += \
-    vendor/feature/no-audio-stack.config
-endif
-
 ifeq ($(TARGET_KERNEL_VERSION),4.19)
-TARGET_KERNEL_CONFIG += \
-    vendor/feature/wireguard.config
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8937-4.19
-else
-TARGET_KERNEL_SOURCE := kernel/motorola/msm8937
+TARGET_KERNEL_RECOVERY_CONFIG += \
+    vendor/msm8937-legacy.config
+endif
+TARGET_KERNEL_RECOVERY_CONFIG += \
+    vendor/motorola/msm8937/common.config
+
+ifeq ($(TARGET_DISABLE_AUDIO),true)
+TARGET_KERNEL_CONFIG += vendor/feature/no-audio-stack.config
+TARGET_KERNEL_RECOVERY_CONFIG += vendor/feature/no-audio-stack.config
 endif
 
 BOARD_KERNEL_SEPARATED_DT ?= true
