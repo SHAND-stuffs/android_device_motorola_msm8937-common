@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Kernel
+TARGET_KERNEL_VERSION := 4.19
+
 # Temporary
 EXTRA_LITE := true
 TARGET_DISABLE_AUDIO ?= true

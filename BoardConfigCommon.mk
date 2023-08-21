@@ -26,7 +26,6 @@ TARGET_SCREEN_DENSITY ?= 280
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/7824900.sdhci androidboot.selinux=permissive
 BOARD_RAMDISK_USE_XZ := true
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8937
-TARGET_KERNEL_VERSION := 4.19
 
 TARGET_KERNEL_CONFIG := \
     vendor/$(TARGET_BOARD_PLATFORM)-perf_defconfig \
