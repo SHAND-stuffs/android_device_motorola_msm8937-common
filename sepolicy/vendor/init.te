@@ -5,5 +5,3 @@ allow init sysfs_moto8937_mach:file r_file_perms;
 allow init vendor_file:file mounton;
 allow init vendor_configs_file:dir mounton;
 allow init vendor_configs_file:file mounton;
-
-get_prop(init, exported2_default_prop);

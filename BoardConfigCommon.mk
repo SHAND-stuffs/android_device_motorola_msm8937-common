@@ -64,6 +64,11 @@ BOARD_USES_METADATA_PARTITION := true
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_COMMON_PATH)/sepolicy/vendor
+ifeq ($(call math_gt_or_eq,$(PLATFORM_SDK_VERSION),31),true)
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_COMMON_PATH)/sepolicy/vendor-a12
+else
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_COMMON_PATH)/sepolicy/vendor-a11
+endif
 
 # Inherit from the proprietary version
 include vendor/motorola/msm8937-common/BoardConfigVendor.mk
