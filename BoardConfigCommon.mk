@@ -32,10 +32,7 @@ TARGET_KERNEL_CONFIG := \
     vendor/msm8937-legacy.config \
     vendor/common.config \
     vendor/feature/android-12.config \
-    vendor/feature/exfat.config \
-    vendor/feature/kprobes.config \
     vendor/feature/lmkd.config \
-    vendor/feature/wireguard.config \
     vendor/feature/no-camera-stack.config \
     vendor/motorola/msm8937/common.config
 
