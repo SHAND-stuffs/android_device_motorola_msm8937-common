@@ -52,8 +52,4 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Inherit from vendor blobs
-#ifeq ($(TARGET_KERNEL_VERSION),4.19)
-#$(call inherit-product, vendor/motorola/msm8937-common-4.19/msm8937-common-4.19-vendor.mk)
-#else
 $(call inherit-product, vendor/motorola/msm8937-common/msm8937-common-vendor.mk)
-#endif

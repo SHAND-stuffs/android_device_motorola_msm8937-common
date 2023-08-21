@@ -29,20 +29,12 @@ while [ "${#}" -gt 0 ]; do
         --only-target )
                 ONLY_TARGET=true
                 ;;
-        --kernel-4.19 )
-                KERNEL_4_19=true
-                SETUP_MAKEFILES_ARGS+=" ${1}"
-                ;;
     esac
     shift
 done
 
 if [ -z "${DEVICE_PARENT}" ]; then
     DEVICE_PARENT="."
-fi
-
-if [ "${KERNEL_4_19}" == "true" ]; then
-    DEVICE_COMMON="msm8937-common-4.19"
 fi
 
 if [ -z "$ONLY_TARGET" ]; then
@@ -54,13 +46,6 @@ if [ -z "$ONLY_TARGET" ]; then
 
     # The standard common blobs
     write_makefiles "${MY_DIR}/proprietary-files.txt" true
-#    if [ "${KERNEL_4_19}" != "true" ]; then
-#        # Kernel 4.9
-#        write_makefiles "${MY_DIR}/proprietary-files-4.9.txt" true
-#    else
-#        # Kernel 4.19
-#        write_makefiles "${MY_DIR}/proprietary-files-4.19.txt" true
-#    fi
 
     # Finish
     write_footers

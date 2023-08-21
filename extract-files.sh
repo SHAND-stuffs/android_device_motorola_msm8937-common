@@ -26,7 +26,6 @@ CLEAN_VENDOR=true
 
 ONLY_COMMON=
 ONLY_TARGET=
-KERNEL_4_19=
 KANG=
 SECTION=
 
@@ -40,10 +39,6 @@ while [ "${#}" -gt 0 ]; do
                 ;;
         --only-target )
                 ONLY_TARGET=true
-                SETUP_MAKEFILES_ARGS+=" ${1}"
-                ;;
-        --kernel-4.19 )
-                KERNEL_4_19=true
                 SETUP_MAKEFILES_ARGS+=" ${1}"
                 ;;
         -n | --no-cleanup )
@@ -71,22 +66,11 @@ if [ -z "${DEVICE_PARENT}" ]; then
     DEVICE_PARENT="."
 fi
 
-if [ "${KERNEL_4_19}" == "true" ]; then
-    DEVICE_COMMON="msm8937-common-4.19"
-fi
-
 if [ -z "${ONLY_TARGET}" ]; then
     # Initialize the helper for common device
     setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true "${CLEAN_VENDOR}"
 
     extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
-#    if [ "${KERNEL_4_19}" != "true" ]; then
-#        # Kernel 4.9
-#        extract "${MY_DIR}/proprietary-files-4.9.txt" "${SRC}" "${KANG}" --section "${SECTION}"
-#    else
-#        # Kernel 4.19
-#        extract "${MY_DIR}/proprietary-files-4.19.txt" "${SRC}" "${KANG}" --section "${SECTION}"
-#    fi
 fi
 
 if [ -z "${ONLY_COMMON}" ] && [ -s "${MY_DIR}/../${DEVICE_PARENT}/${DEVICE}/proprietary-files.txt" ]; then
