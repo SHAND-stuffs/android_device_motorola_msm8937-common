@@ -1,3 +1,6 @@
+# Motorola Mi8937 - Bluetooth
+bluetooth.sco.disable_enhanced_connection=1
+
 # Motorola MSM8937 - SoC
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=MSM8937
