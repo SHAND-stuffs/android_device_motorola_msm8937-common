@@ -1,2 +1,0 @@
-get_prop(init_xiaomi, exported_default_prop);
-get_prop(init_xiaomi, exported2_default_prop);
